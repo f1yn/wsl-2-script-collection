@@ -9,7 +9,7 @@
 wsl_address="$(hostname -I | xargs)";
 
 # Get the address of the Windows 10 host IP
-host_address="$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')";
+host_address="$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit}')";
 
 # Ensure the values are additionally exported for reuse in the env script
 export WSL_IP=$wsl_address;
