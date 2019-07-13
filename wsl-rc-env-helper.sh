@@ -15,9 +15,13 @@ host_address="$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')";
 export WSL_IP=$wsl_address;
 export WSL_HOST=$host_address;
 
-echo "$(uname -a)
+# Ensure that git GPG (protected by a password) can be signed within a
+# Microsoft-based TTY (such as conhost, Microsoft Terminal, or Fluent)
+export GPG_TTY=$(tty);
+
+echo "
+$(uname -a)
 
 This instance has been assigned $wsl_address (\$WSL_IP)
 The Windows Host machine $(hostname) can be accessed from $host_address (\$WSL_HOST)
-
 ";
