@@ -6,7 +6,7 @@
 # Intended to be included within the your ~/.bashrc or ~/.zshrc
 
 # Get the primary IP address of WSL 2 distro (guest IP)
-wsl_address="$(hostname -I | xargs)";
+wsl_address="$(hostname -I | xargs | awk '{print $1; exit}')";
 
 # Get the address of the Windows 10 host IP
 host_address="$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit}')";
