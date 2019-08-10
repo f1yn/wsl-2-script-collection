@@ -33,8 +33,8 @@ if [ $should_commit_init = false ]; then
 	exit
 fi
 
-echo "Booting essential startup commands:"
-sudo bash ./wsl-rc-init-sudo.sh
+echo "Booting essential startup commands..."
+sudo bash "${BASH_SOURCE%/*}/wsl-rc-init-sudo.sh"
 
 # Ensure that we commit the uptime to the temporary flag file
 echo $system_started_at > $CUSTOM_WSL_BOOT_FLAG
