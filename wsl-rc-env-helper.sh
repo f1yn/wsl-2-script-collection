@@ -15,6 +15,9 @@ host_address="$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit}')
 export WSL_IP=$wsl_address;
 export WSL_HOST=$host_address;
 
+# Ensure that a Windows X Server can connect
+export DISPLAY="$host_address:0.0";
+
 # Ensure that git GPG (protected by a password) can be signed within a
 # Microsoft-based TTY (such as conhost, Microsoft Terminal, or Fluent)
 export GPG_TTY=$(tty);
